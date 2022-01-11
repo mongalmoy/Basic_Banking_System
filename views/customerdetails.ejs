@@ -1,0 +1,49 @@
+<%- include('partials/header'); -%>
+
+<div class="customer-details-page">
+    <div class="customer-details-container">
+
+        <div class="customer-details-heading">
+            <h1>Customer Account Details</h1>
+        </div>
+
+        <div class="customer-profile">
+            <div class="customer-img">
+                <img src="/images/actor_profile_img.png" alt="image">
+            </div>
+            <div class="profile-details-outer">
+                <div class="profile-details-inner">
+                    <p><span>Name:</span> <%= user.customer_name %> </p>
+                    <p><span>Date of Birth:</span> <%= user.customer_details.customer_dob %> </p>
+                    <p><span>Gender:</span> <%= user.customer_details.customer_gender %> </p>
+                    <p><span>Created on:</span> <%= user.customer_details.account_create_date %> </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="customer-other-details">
+            <div class="inner-div">
+                <p><span>Account ID:</span> <%= user.customer_details.customer_id %> </p>
+                <p><span>Email ID:</span> <%= user.customer_email %> </p>
+                <p><span>Contact Number:</span> <%= user.customer_details.customer_ph %> </p>
+                <p><span>Residential Address:</span> <%= user.customer_details.customer_address %> </p>
+                <p><span>Current Balance:</span> <%= user.customer_balance %> </p>
+            </div>
+        </div>
+
+        <div class="txn-buttons">
+            <form action="/transactions" method="post">
+                
+                <button name="txnType" value="view" type="submit">View Transaction</button>
+                <button name="txnType" value="add" type="submit">Add Funds</button>
+                <button name="txnType" value="withdraw" type="submit">Withdraw Ammount</button>
+                <button name="txnType" value="transfer" type="submit">Transfer Funds</button>
+                <input type="text" name="customerEmail" value="<%= user.customer_email %>">
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

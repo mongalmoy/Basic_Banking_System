@@ -1,0 +1,353 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    height: 100vh;
+}
+
+/************** Nav Starts ****************/
+.container-fluid .navbar-brand-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.container-fluid .navbar-brand-div a {
+    font-size: 35px;
+    padding-left: 5px;
+    font-weight: 600;
+}
+
+.navbar .navbar-collapse {
+    margin-left: 950px;
+    font-size: 20px;
+}
+
+.navbar .navbar-collapse ul li .about-us {
+    margin-left: 15px;
+}
+/************** Nav Ends *****************/
+
+
+
+/****************** Home Starts ****************/
+.main {
+    width: 100%;
+    height: calc(100% - 138.5px);
+    background: linear-gradient(0deg, rgb(231, 129, 60), rgb(127, 185, 219));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .home {
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/online-banking.jpg");
+}
+
+.home .display {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.display .display-items h1 {
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding-left: 5px;
+}
+
+.display .display-items p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    padding-left: 5px;
+}
+
+.display .display-items .button-div {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+}
+
+.display .display-items button {
+    outline: none;
+    border: none;
+    width: 160px;
+    height: 40px;
+    background: rgba(41, 235, 128, 0.808);
+    color: rgba(31, 36, 33, 0.74);
+    transition: all ease 0.5s;
+}
+
+.display .display-items button:hover {
+    width: 170px;
+    height: 43px;
+}
+/******************* Home Ends *****************/
+
+
+
+
+/*----------------- Customer List Table Strars -------------*/
+.customerlist-page {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    height: 88vh;
+}
+
+.customerlist-page .customerlist-header {
+    margin: 20px;
+    margin-top: 35px;
+}
+
+.customerlist-page .customerlist-header h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 700;
+}
+
+.customerlist-page .cusomerlist-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#customerlisttable {
+    border-collapse: collapse;
+    width: 900px;
+    height: 150px;
+    background-color: #fff;
+}
+
+#customerlisttable th {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+}
+
+#customerlisttable td {
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+}
+
+#customerlisttable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customerlisttable tr:hover {
+    background-color: #ddd;
+}
+
+#customerlisttable th {
+    background-color: #04AA6D;
+    color: #fff;
+    font-weight: 600;
+}
+
+#customerlisttable .transfer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+}
+
+#customerlisttable .transfer-button button {
+    outline: none;
+    border: 2px solid rgb(141, 139, 139);
+    padding: 3px 6px;
+    color: #000;
+}
+
+#customerlisttable .transfer-button button:hover {
+    background-color: #959fa0;
+}
+/*----------------- Customer List Table Ends -----------------*/
+
+
+
+
+/*----------------- Customer Details Page Starts -----------------*/
+.customer-details-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer-details-page .customer-details-container {
+    width: 700px;
+    height: 500px;
+    background-color: #fff;
+}
+
+.customer-details-container .customer-details-heading {
+    padding: 6px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    padding-bottom: 1px solid #ddd;
+}
+
+.customer-details-container .customer-details-heading  h1 {
+    font-weight: 600;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+}
+
+.customer-details-container .customer-profile {
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+
+.customer-profile .customer-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 100%;
+}
+
+.customer-profile .customer-img img {
+    height: 120px;
+    width: 120px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.customer-profile .profile-details-outer {
+    position: absolute;
+    left: 300px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100%;
+}
+
+.customer-profile .profile-details-outer .profile-details-inner {
+    width: 300px;
+    height: 133px;
+    border: 1px solid #ddd;
+}
+
+.profile-details-inner p {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0;
+    padding: 4px 4px;
+}
+
+.profile-details-inner p span{
+    font-weight: 500;
+}
+
+.customer-details-container .customer-other-details {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer-other-details .inner-div {
+    width: 680px;
+    height: 180px;
+    border: 2px solid #837f7f;
+}
+
+.customer-other-details .inner-div p {
+    line-height: 35px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.customer-other-details .inner-div p span {
+    font-weight: 500;
+}
+
+.customer-details-container .txn-buttons {
+    width: 100%;
+    height: calc(100% - 448px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customer-details-container .txn-buttons button {
+    margin-left: 15px;
+    outline: none;
+    border: none;
+    padding: 4px 15px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.customer-details-container .txn-buttons input {
+    display: none;
+}
+
+.customer-details-container .txn-buttons button:nth-child(1) {
+    background-color: #1d1df7;
+}
+
+.customer-details-container .txn-buttons button:nth-child(2) {
+    background-color: #126912;
+}
+
+.customer-details-container .txn-buttons button:nth-child(3) {
+    background-color: rgb(180, 180, 14);
+}
+
+.customer-details-container .txn-buttons button:nth-child(4) {
+    background-color: rgb(197, 19, 19);
+}
+
+/*----------------- Customer Details Page Ends -------------------*/
+
+
+
+/***************** Foote Starts *****************/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(19, 23, 26);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+/***************** Footer Ends ******************/

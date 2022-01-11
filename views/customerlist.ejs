@@ -1,0 +1,38 @@
+<%- include('partials/header'); -%>
+
+<div class="customerlist-page">
+    <div class="customerlist-header">
+        <h1>Customer List</h1>
+    </div>
+
+    <div class="cusomerlist-table-container">
+
+        <form action="/customerdetails" method="post">
+
+            <table id="customerlisttable">
+                <tr class="heading-1">
+                    <th>Serial No</th>
+                    <th>Customer Name</th>
+                    <th>E-mail</th>
+                    <th>Current Balance</th>
+                    <th>Details</th>
+                </tr>
+    
+                <% users.forEach( (user) => { %>
+                    <tr class="heading-2">
+                        <td> <%= user.serial_no %> </td>
+                        <td> <%= user.customer_name %> </td>
+                        <td> <%= user.customer_email %> </td>
+                        <td> ₹<%= user.customer_balance %> </td>
+                        <td class="transfer-button"> <button name="customerEmail" value="<%= user.customer_email %>" type="submit">Customer Details / Transfer</button> </td>
+                    </tr>
+                <%});%>
+    
+            </table>
+
+        </form>
+
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>
