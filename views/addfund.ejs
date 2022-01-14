@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+
+<div class="addfund-page">
+    <div>
+        <div class="addfund-heading">
+            <h1>Add Money to the Account</h1>
+        </div>
+        
+        <div class="form-div">
+            <form method="POST" action="/customers/<%= user.customer_id %>/txn/addfund">
+        
+                <div class="container">
+                    <div class="addfund-amount">
+                        <label for="addfund">Enter Amount:</label>
+                        <input id="addfund" name="addAmount" type="Number" required>
+                    </div>
+            
+                    <div class="addfund-buttons">
+                        <a href="/customers/<%= user.customer_id %>"><button type="button">Cancel</button></a>
+                        <button type="submit">Add</button>
+                    </div>
+                </div>
+        
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

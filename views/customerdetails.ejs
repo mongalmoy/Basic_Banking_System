@@ -23,7 +23,7 @@
 
         <div class="customer-other-details">
             <div class="inner-div">
-                <p><span>Account ID:</span> <%= user.customer_details.customer_id %> </p>
+                <p><span>Account ID:</span> <%= user.customer_id %> </p>
                 <p><span>Email ID:</span> <%= user.customer_email %> </p>
                 <p><span>Contact Number:</span> <%= user.customer_details.customer_ph %> </p>
                 <p><span>Residential Address:</span> <%= user.customer_details.customer_address %> </p>
@@ -32,13 +32,12 @@
         </div>
 
         <div class="txn-buttons">
-            <form action="/transactions" method="post">
+            <form action="/customers/<%= user.customer_id %>/txn" method="post">
                 
                 <button name="txnType" value="view" type="submit">View Transaction</button>
                 <button name="txnType" value="add" type="submit">Add Funds</button>
                 <button name="txnType" value="withdraw" type="submit">Withdraw Ammount</button>
                 <button name="txnType" value="transfer" type="submit">Transfer Funds</button>
-                <input type="text" name="customerEmail" value="<%= user.customer_email %>">
 
             </form>
         </div>

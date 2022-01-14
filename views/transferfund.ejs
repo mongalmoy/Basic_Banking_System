@@ -1,0 +1,36 @@
+<%- include('partials/header'); -%>
+
+<div class="addfund-page">
+    <div>
+        <div class="addfund-heading">
+            <h1>Transfer Fund</h1>
+        </div>
+        
+        <div class="form-div">
+            <form method="POST" action="/customers/<%= user.customer_id %>/txn/transferfund">
+        
+                <div class="container">
+                    <div class="addfund-amount">
+                        <div class="input-container-div">
+                            <label for="recepientAccountNo">To Account number:</label>
+                            <input id="recepientAccountNo" name="recepientAccNo" type="Number" required>
+                        </div>
+            
+                        <div class="input-container-div">
+                            <label for="transferAmount">Transfer Amount:</label>
+                            <input id="transferAmount" type="number" name="transferAmount" required>
+                        </div>
+                    </div>
+
+                    <div class="addfund-buttons">
+                        <a href="/customers/<%= user.customer_id %>"><button type="button">Cancel</button></a>
+                        <button type="submit">Transfer</button>
+                    </div>
+                </div>
+        
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

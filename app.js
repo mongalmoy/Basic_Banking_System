@@ -14,8 +14,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const detailsSchema = new mongoose.Schema ({
-    customer_id: String,
-    account_no: Number,
     account_type: String,
     customer_ph: Number,
     customer_gender: String,
@@ -28,6 +26,8 @@ const userSchema = new mongoose.Schema ({
     serial_no: Number,
     customer_name: String,
     customer_email: String,
+    customer_id: String,
+    account_no: Number,
     customer_balance: Number,
     customer_details: detailsSchema
 });
@@ -44,53 +44,70 @@ app.get('/home', function(req, res) {
     res.render('home');
 });
 
-app.get('/customerlist', function(req, res) {
+app.get('/customers', function(req, res) {
     User.find({}, (err, response) => {
         res.render('customerlist', {users: response});
     });
 });
 
-app.post('/customerlist', function(req, res) {
+app.post('/customers', function(req, res) {
     User.find({}, (err, response) => {
         res.render('customerlist', {users: response});
-    }); 
+    });
 });
 
-app.post('/customerdetails', function(req, res) {
-    const customerEmail = req.body.customerEmail;
-    User.findOne({customer_email: customerEmail}, function(err, foundDocument) {
+app.get('/customers/:id', function(req, res) {
+    const customerID = req.params.id;
+
+    // console.log(customerID);
+    User.findOne({customer_id: customerID}, function(err, foundDocument) {
         if(!err){
             res.render('customerdetails', {user: foundDocument});
         }
     });
 });
 
-app.post('/transactions', function(req, res) {
-    const txnType = req.body.txnType;
-    const customerEmail = req.body.customerEmail;
+app.post('/customers/:id', function(req, res) {
+    const customerID = req.params.id;
+    User.findOne({customer_id: customerID}, function(err, foundDocument) {
+        if(!err){
+            res.render('customerdetails', {user: foundDocument});
+        }
+    });
+});
 
-    if(txnType === "add"){
-        res.render('addfunds', {customerEmail: customerEmail});
-    }
+app.post('/customers/:id/txn', function(req, res) {
+    const txnType = req.body.txnType;
+    const customerID = req.params.id;
+
+    User.findOne({customer_id: customerID}, function(err, foundDocument) {
+        if(!err){
+            if(txnType === "add"){
+                res.render('addfund', {user: foundDocument});
+            } else if(txnType === "withdraw") {
+                res.render('withdrawfund', {user: foundDocument});
+            } else if(txnType === 'transfer') {
+                res.render('transferfund', {user: foundDocument});
+            }
+        } 
+    });
 
 }); 
 
-app.post('/controladdfunds', function(req, res) {
+app.post('/customers/:id/txn/addfund', function(req, res) {
     const addAmount = req.body.addAmount;
-    const customerEmail = req.body.customerEmail;
-    // console.log(customerEmail);
-    // console.log(addAmount);
+    const customerID = req.params.id;
     
-    User.findOne({customer_email: customerEmail }, function(err, foundDocument){
+    User.findOne({customer_id: customerID }, function(err, foundDocument){
         if(!err){
             let currentBalance = parseInt(foundDocument.customer_balance) + parseInt(addAmount);
-            console.log(currentBalance);
+            // console.log(currentBalance);
             foundDocument.customer_balance = currentBalance;
 
-            User.updateOne({customer_email: customerEmail}, {$set: {customer_balance: currentBalance}}, {upsert : true}, function(err){
+            User.updateOne({customer_id: customerID}, {$set: {customer_balance: currentBalance}}, {upsert : true}, function(err){
                 if(!err){
-                    // console.log(foundDocument);
-                    res.render('customerdetails', {user: foundDocument});
+                    res.redirect(`/customers/${customerID}`);
+                    // console.log(foundDocument.customer_id);
                 } else {
                     console.log(err);
                 }
@@ -98,6 +115,74 @@ app.post('/controladdfunds', function(req, res) {
         }
     });
 });
+
+
+app.post('/customers/:id/txn/withdrawfund', function(req, res) {
+    const customerID = req.params.id;
+    const withdrawAmount = req.body.withdrawAmount;
+
+    User.findOne({customer_id: customerID}, function(err, foundDocument){
+        if(!err){
+            if(parseInt(foundDocument.customer_balance) >= parseInt(withdrawAmount)){
+                let currentBalance = parseInt(foundDocument.customer_balance) - parseInt(withdrawAmount);
+                // console.log(currentBalance);
+                foundDocument.customer_balance = currentBalance;
+
+                User.updateOne({customer_id: customerID}, {$set: {customer_balance: currentBalance}}, {upsert : true}, function(err){
+                    if(!err){
+                        res.redirect(`/customers/${customerID}`);
+                        // console.log(foundDocument.customer_id);
+                    } else {
+                        console.log(err);
+                    }
+                });
+            } else {
+                res.send("<h1>Your Account doesn't hold that much ammount!</h1>");
+            }
+        }
+    });
+});
+
+
+app.post('/customers/:id/txn/transferfund', function(req, res) {
+    const customerID = req.params.id;
+    const recepientAccNo = req.body.recepientAccNo;
+    const transferAmount = req.body.transferAmount;
+
+    User.findOne({customer_id: customerID}, function(err, foundUser1){
+        if(!err){
+            if(parseInt(foundUser1.customer_balance) >= parseInt(transferAmount)){
+                let currentBalanceUser1 = parseInt(foundUser1.customer_balance) - parseInt(transferAmount);
+                foundUser1.customer_balance = currentBalanceUser1;
+
+                User.updateOne({customer_id: customerID}, {$set: {customer_balance: currentBalanceUser1}}, {upsert : true}, function(err){
+                    if(!err){
+                        User.findOne({account_no: recepientAccNo}, function(err, foundUser2) {
+                            if(!err){
+                                let currentBalanceUser2 = parseInt(foundUser2.customer_balance) + parseInt(transferAmount);
+                                foundUser2.customer_balance = currentBalanceUser2;
+
+                                User.updateOne({account_no: recepientAccNo}, {$set: {customer_balance: currentBalanceUser2}}, {upsert: true}, function(error){
+                                    if(!error){
+                                        res.redirect(`/customers/${customerID}`);
+                                    } else {
+                                        console.log(error);
+                                    }
+                                })
+                            } else {
+                                console.log(err);
+                            }
+                        })
+                    } else {
+                        console.log(err);
+                    }
+                });
+            } else {
+                res.send("<h1>Your Account doesn't hold that much ammount!</h1>");
+            }
+        }
+    })
+})
 
 
 app.listen(3000, function(){

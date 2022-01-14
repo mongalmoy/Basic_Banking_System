@@ -319,14 +319,98 @@ body {
 }
 
 .customer-details-container .txn-buttons button:nth-child(3) {
-    background-color: rgb(180, 180, 14);
+    background-color: #b4b40e;
 }
 
 .customer-details-container .txn-buttons button:nth-child(4) {
-    background-color: rgb(197, 19, 19);
+    background-color: #c51313;
 }
 
 /*----------------- Customer Details Page Ends -------------------*/
+
+
+
+/******************** addfund page starts ************************/
+.addfund-page {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addfund-page .addfund-heading {
+    margin: 20px 0 50px;
+}
+
+.addfund-page .addfund-heading h1 {
+    font-size: 50px;
+    font-weight: 700;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.addfund-page .form-div {
+    margin: 0;
+    padding: 0;
+}
+
+.addfund-page .form-div form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.addfund-page .form-div form .container {
+    padding: 0;
+    margin: 0;
+}
+
+.addfund-page .form-div .container .addfund-amount,  .addfund-page .form-div .container .addfund-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.addfund-page .form-div .container .addfund-amount {
+    font-size: 30px;
+    font-weight: 500;
+    display: block;
+}
+
+.addfund-page .form-div .container .addfund-amount .input-container-div {
+    margin-bottom: 15px;
+}
+
+.addfund-page .form-div .container .addfund-amount input {
+    font-size: 18px;
+    margin-left: 10px;
+    outline: none;
+    border: none;
+    background-color: #ececec;
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+
+.addfund-page .form-div .container .addfund-buttons button {
+    margin: 20px 30px;
+    outline: none;
+    border: none;
+    width: 130px;
+    height: 35px;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.addfund-page .form-div .container .addfund-buttons button:nth-child(1){
+    background-color: #c51313;
+}
+
+.addfund-page .form-div .container .addfund-buttons button:nth-child(2) {
+    background-color: #126912;
+}
+/******************** addfund page ends **************************/
 
 
 
@@ -349,5 +433,9 @@ body {
     margin: 0;
     padding: 0;
     font-size: 15px;
+}
+
+.footer p span:hover {
+    color: aqua;
 }
 /***************** Footer Ends ******************/

@@ -1,0 +1,30 @@
+
+<%- include('partials/header'); -%>
+
+<div class="addfund-page">
+    <div>
+        <div class="addfund-heading">
+            <h1>Withdraw Money from the Account</h1>
+        </div>
+        
+        <div class="form-div">
+            <form method="POST" action="/customers/<%= user.customer_id %>/txn/withdrawfund">
+        
+                <div class="container">
+                    <div class="addfund-amount">
+                        <label for="addfund">Enter Amount:</label>
+                        <input id="addfund" name="withdrawAmount" type="Number" required>
+                    </div>
+            
+                    <div class="addfund-buttons">
+                        <a href="/customers/<%= user.customer_id %>"><button type="button">Cancel</button></a>
+                        <button type="submit">Withdraw</button>
+                    </div>
+                </div>
+        
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

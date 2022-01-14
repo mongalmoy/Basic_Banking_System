@@ -7,30 +7,28 @@
 
     <div class="cusomerlist-table-container">
 
-        <form action="/customerdetails" method="post">
-
-            <table id="customerlisttable">
-                <tr class="heading-1">
-                    <th>Serial No</th>
-                    <th>Customer Name</th>
-                    <th>E-mail</th>
-                    <th>Current Balance</th>
-                    <th>Details</th>
-                </tr>
+        <table id="customerlisttable">
+            <tr class="heading-1">
+                <th>Serial No</th>
+                <th>Customer Name</th>
+                <th>E-mail</th>
+                <th>Current Balance</th>
+                <th>Details</th>
+            </tr>
     
-                <% users.forEach( (user) => { %>
-                    <tr class="heading-2">
+            <% users.forEach( (user) => { %>
+                <tr class="heading-2">
+                    <form action="/customers/<%= user.customer_id %>" method="POST">
                         <td> <%= user.serial_no %> </td>
                         <td> <%= user.customer_name %> </td>
                         <td> <%= user.customer_email %> </td>
                         <td> ₹<%= user.customer_balance %> </td>
-                        <td class="transfer-button"> <button name="customerEmail" value="<%= user.customer_email %>" type="submit">Customer Details / Transfer</button> </td>
-                    </tr>
-                <%});%>
+                        <td class="transfer-button"> <button type="submit">Customer Details / Transfer</button> </td>
+                    </form>
+                </tr>
+            <%});%>
     
-            </table>
-
-        </form>
+        </table>
 
     </div>
 </div>
