@@ -50,7 +50,7 @@ body .navbar-expand-lg {
     align-items: center;
     z-index: 0;
     height: calc(100vh - 130px);
-    background: linear-gradient(0deg, rgb(231, 129, 60), rgb(127, 185, 219));
+    background: linear-gradient(0deg, rgb(194, 194, 101), rgb(146, 206, 221));
 }
 
 .main .home {
@@ -201,8 +201,10 @@ body .navbar-expand-lg {
 
 .customer-details-page .customer-details-container {
     width: 700px;
-    height: 500px;
+    height: 510px;
     background-color: #fff;
+    border-radius: 10px;
+    color: #000;
 }
 
 .customer-details-container .customer-details-heading {
