@@ -1,0 +1,35 @@
+<%- include('partials/header'); -%>
+
+<div class="viewtxn-page">
+    <div>
+        <div class="viewtxn-heading">
+            <h1>Transaction details for: <%= user.customer_name %></h1>
+        </div>
+    
+        <div class="viewtxn-body">
+            <table id="viewtxn-table">
+                <tr>
+                    <th>Date</th>
+                    <th>Transferred From</th>
+                    <th>Transferred To</th>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                    <th>Balance</th>
+                </tr>
+                <%user.transactions.forEach(function(txn){%>
+                    <tr>
+                        <td><%= txn.date_of_txn %></td>
+                        <td><%= txn.transferred_from %></td>
+                        <td><%= txn.transferred_to %></td>
+                        <td class="debit"><%= txn.debit_amount %></td>
+                        <td class="credit"><%= txn.credit_amount %></td>
+                        <td class="balance"><%= txn.balance %></td>
+                    </tr>
+                <%});%>
+                
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

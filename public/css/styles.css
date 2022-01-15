@@ -3,10 +3,16 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    height: 100vh;
 }
 
 /************** Nav Starts ****************/
+body .navbar-expand-lg {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: 70px;
+}
+
 .container-fluid .navbar-brand-div {
     display: flex;
     justify-content: center;
@@ -36,17 +42,21 @@ body {
 /****************** Home Starts ****************/
 .main {
     width: 100%;
-    height: calc(100% - 138.5px);
-    background: linear-gradient(0deg, rgb(231, 129, 60), rgb(127, 185, 219));
+    position: absolute;
+    left: 0;
+    top: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 0;
+    height: calc(100vh - 130px);
+    background: linear-gradient(0deg, rgb(231, 129, 60), rgb(127, 185, 219));
 }
 
 .main .home {
     width: 100%;
-    height: 100%;
     background-image: url("/images/online-banking.jpg");
+    height: calc(100vh - 130px);
 }
 
 .home .display {
@@ -105,7 +115,10 @@ body {
     margin: 0;
     padding: 10px;
     width: 100%;
-    height: 88vh;
+    background: linear-gradient(0deg, rgb(231, 129, 60), rgb(127, 185, 219));
+    padding-bottom: 90px;
+    z-index: 0;
+    padding-top: 0;
 }
 
 .customerlist-page .customerlist-header {
@@ -339,7 +352,7 @@ body {
 }
 
 .addfund-page .addfund-heading {
-    margin: 20px 0 50px;
+    margin: 20px 0 40px;
 }
 
 .addfund-page .addfund-heading h1 {
@@ -375,7 +388,7 @@ body {
 .addfund-page .form-div .container .addfund-amount {
     font-size: 30px;
     font-weight: 500;
-    display: block;
+    display: flex;
 }
 
 .addfund-page .form-div .container .addfund-amount .input-container-div {
@@ -414,6 +427,66 @@ body {
 
 
 
+
+/********************* View Transaction page starts *************************/
+.viewtxn-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewtxn-page .viewtxn-heading {
+    margin: 10px 10px 20px;
+}
+
+.viewtxn-page .viewtxn-heading h1 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.viewtxn-page .viewtxn-body {
+    margin: 0;
+    padding: 0;
+    background-color: #ebebeb;
+}
+
+.viewtxn-page .viewtxn-body table {
+    width: 1000px;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+#viewtxn-table th {
+    border: 1px solid #b1b0b0;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#viewtxn-table td {
+    border: 1px solid #b1b0b0;
+    padding: 5px 10px;
+    text-align: center;
+    color: #000;
+}
+
+#viewtxn-table .credit {
+    color: green;
+}
+
+#viewtxn-table .debit {
+    color: red;
+}
+
+#viewtxn-table .balance {
+    background-color: #d6d6d6;
+}
+/********************* View Transaction page ends  *************************/
+
+
+
+
 /***************** Foote Starts *****************/
 .footer {
     position: fixed;
@@ -426,7 +499,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 99;
 }
 
 .footer p {
