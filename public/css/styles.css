@@ -319,6 +319,7 @@ body .navbar-expand-lg {
     padding: 4px 15px;
     color: #fff;
     font-weight: 400;
+    cursor: pointer;
 }
 
 .customer-details-container .txn-buttons input {
@@ -327,18 +328,38 @@ body .navbar-expand-lg {
 
 .customer-details-container .txn-buttons button:nth-child(1) {
     background-color: #1d1df7;
+    opacity: 0.8;
+}
+
+.customer-details-container .txn-buttons button:nth-child(1):hover {
+    opacity: 1;
 }
 
 .customer-details-container .txn-buttons button:nth-child(2) {
     background-color: #126912;
+    opacity: 0.8;
+}
+
+.customer-details-container .txn-buttons button:nth-child(2):hover {
+    opacity: 1;
 }
 
 .customer-details-container .txn-buttons button:nth-child(3) {
     background-color: #b4b40e;
+    opacity: 0.8;
+}
+
+.customer-details-container .txn-buttons button:nth-child(3):hover {
+    opacity: 1;
 }
 
 .customer-details-container .txn-buttons button:nth-child(4) {
     background-color: #c51313;
+    opacity: 0.8;
+}
+
+.customer-details-container .txn-buttons button:nth-child(4):hover {
+    opacity: 1;
 }
 
 /*----------------- Customer Details Page Ends -------------------*/
